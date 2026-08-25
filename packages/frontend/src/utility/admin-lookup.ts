@@ -54,7 +54,7 @@ export async function lookupUserByEmail() {
 		},
 	}).then(user => {
 		os.pageWindow(`/admin/user/${user.id}`);
-	});
+	}, () => undefined);
 }
 
 export async function lookupFile() {
