@@ -105,7 +105,9 @@ function addUser() {
 			listId: list.value.id,
 			userId: user.id,
 		}).then(() => {
+			list.value?.userIds?.push(user.id);
 			membershipsPaginator.reload();
+			userListsCache.delete();
 		});
 	});
 }
@@ -121,7 +123,10 @@ async function removeUser(item: Misskey.entities.UsersListsGetMembershipsRespons
 				listId: list.value.id,
 				userId: item.userId,
 			}).then(() => {
+				const index = list.value?.userIds?.indexOf(item.userId) ?? -1;
+				if (index !== -1) list.value?.userIds?.splice(index, 1);
 				membershipsPaginator.removeItem(item.id);
+				userListsCache.delete();
 			});
 		},
 	}], ev.currentTarget ?? ev.target);
