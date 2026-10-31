@@ -1,3 +1,14 @@
+## Unreleased
+
+### General
+-
+
+### Client
+-
+
+### Server
+- Fix: iOSなど一部環境でパスキーの登録・認証に失敗する問題を修正
+
 ## 2026.10.2
 
 ### General
